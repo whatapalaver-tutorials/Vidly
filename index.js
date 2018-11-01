@@ -5,6 +5,11 @@ const express = require('express');
 const morgan = require('morgan') // logs http requests
 const app = express();
 const genres = require('./routes/genres');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/vidly', { useNewUrlParser: true })
+  .then(() => debug('Connected to mongodb...'))
+  .catch(err => console.error('Could not connect to MongoDb...', err))
 
 // app.get defaults to development if not set
 if (app.get('env') === 'development') {
