@@ -5,6 +5,7 @@ const express = require('express');
 const morgan = require('morgan') // logs http requests
 const app = express();
 const genres = require('./routes/genres');
+const customers = require('./routes/customers');
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/vidly', { useNewUrlParser: true })
@@ -20,6 +21,7 @@ if (app.get('env') === 'development') {
 app.use(express.json());
 app.use(express.static('public'));
 app.use('/api/genres', genres)
+app.use('/api/customers', customers)
 
 
 
