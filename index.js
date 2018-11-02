@@ -6,6 +6,7 @@ const morgan = require('morgan') // logs http requests
 const app = express();
 const genres = require('./routes/genres');
 const customers = require('./routes/customers');
+const movies = require('./routes/movies');
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/vidly', { useNewUrlParser: true })
@@ -20,12 +21,9 @@ if (app.get('env') === 'development') {
 
 app.use(express.json());
 app.use(express.static('public'));
-app.use('/api/genres', genres)
-app.use('/api/customers', customers)
-
-
-
-
+app.use('/api/genres', genres);
+app.use('/api/customers', customers);
+app.use('/api/movies', movies);
 
 // PORT
 const port = process.env.PORT || 4000
