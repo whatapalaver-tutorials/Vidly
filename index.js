@@ -1,3 +1,5 @@
+const Joi = require('joi');
+Joi.objectId = require('joi-objectid')(Joi);
 // Run in debug mode by `DEBUG=app nodemon index.js`
 // Use debug() in place of console.log
 const debug = require('debug')('app')
